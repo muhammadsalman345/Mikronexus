@@ -95,13 +95,15 @@
 	  const circles = document.querySelectorAll('.circle');
 	  const totalPointsElement = document.getElementById('total-points');
 	  let totalPoints = 0;
-  
+  var array =[]
 	  circles.forEach((circle, index) => {
 		circle.addEventListener('click', (event) => {
 		  event.stopPropagation();
 		  circles.forEach((circle, i) => {
 			if (circle === event.target) {
 			  beep.play();
+			  array.push(event.target.getAttribute('value'))
+			  console.log(array);
 			  circle.classList.add('clicked');
 			  let a = event.target.getAttribute('value');
 			  
@@ -117,7 +119,7 @@
 			  }
 			 
 			  console.log(`this is  red ${a}`);
-			  console.log(event.target.getAttribute('value'));
+			//   console.log(event.target.getAttribute('value'));
 			} else {
 			  circle.classList.remove('clicked');
 			}
@@ -154,6 +156,7 @@
 		  secondsLeft--;
 		}
 	  }
+	  
   
 	  const countdownInterval = setInterval(updateCountdown, 1000);
 	</script>
